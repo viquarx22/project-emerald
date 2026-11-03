@@ -1,0 +1,47 @@
+:root {
+  /* Palette — Dark Emerald / Forest Green / Luxury Futurism */
+  --bg: #061a14;
+  --bg-2: #0b241b;
+  --surface: #102d22;
+  --accent: #00dfa0;
+  --mint: #8affc1;
+  --gold: #c8b88a;
+  --text: #e8f2ec;
+  --muted: #8fa99a;
+  --void: #030d09;
+
+  --line: rgba(138, 255, 193, 0.14);
+  --line-strong: rgba(138, 255, 193, 0.3);
+  --gold-line: rgba(200, 184, 138, 0.45);
+
+  /* Type */
+  --font-display: 'Instrument Serif', 'Times New Roman', Georgia, serif;
+  --font-sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --fs-body: clamp(0.98rem, 0.94rem + 0.2vw, 1.1rem);
+  --fs-lead: clamp(1.25rem, 1.05rem + 0.9vw, 1.85rem);
+  --fs-label: 0.72rem;
+  --fs-display: clamp(2.3rem, 1.2rem + 4.6vw, 4.8rem);
+  --fs-display-xl: clamp(2.8rem, 1.2rem + 6.4vw, 6.4rem);
+
+  /* Layout */
+  --pad: clamp(20px, 4.4vw, 72px);
+  --header-h: 76px;
+  --radius: 2px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Stacking */
+  --z-canvas: 0;
+  --z-content: 2;
+  --z-nav: 40;
+  --z-header: 50;
+  --z-menu: 60;
+  --z-intro: 100;
+  --z-flash: 110;
+  --z-toast: 120;
+  --z-cursor: 200;
+}

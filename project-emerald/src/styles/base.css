@@ -1,0 +1,264 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+html.is-locked,
+html.is-locked body {
+  overflow: hidden;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.menu-open body {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+em {
+  font-style: italic;
+}
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  border: 1px solid var(--line-strong);
+  padding: 1px 6px;
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+section[tabindex='-1']:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 300;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: var(--void);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  transform: translateY(-200%);
+  transition: transform 0.25s var(--ease);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ------------------------------ Page structure ------------------------------ */
+.site {
+  position: relative;
+  overflow-x: clip; /* clip (not hidden) so position: sticky keeps working */
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+  background: var(--void);
+}
+.canvas-wrap canvas {
+  display: block;
+}
+
+.static-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 70% 35%, rgba(0, 223, 160, 0.16), transparent 70%),
+    radial-gradient(50% 40% at 20% 80%, rgba(200, 184, 138, 0.08), transparent 70%),
+    linear-gradient(180deg, var(--bg), var(--void));
+}
+.static-backdrop svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+.site__content {
+  position: relative;
+  z-index: var(--z-content);
+  transition: opacity 0.9s var(--ease);
+}
+
+/* Nothing but the cinematic intro is visible before the visitor enters. */
+.site:not([data-phase='world']) .site__content,
+.site:not([data-phase='world']) .header,
+.site:not([data-phase='world']) .footer {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.section,
+.projects,
+.education,
+.journey {
+  position: relative;
+}
+
+/* ------------------------------ Typography ------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-display);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+.display--xl {
+  font-size: var(--fs-display-xl);
+}
+.display em,
+.hero__tagline em {
+  color: var(--mint);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-size: var(--fs-lead);
+  line-height: 1.32;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.body {
+  color: var(--muted);
+  max-width: 58ch;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.eyebrow__index {
+  color: var(--accent);
+}
+.eyebrow__rule {
+  width: 44px;
+  height: 1px;
+  background: var(--gold-line);
+}
+
+/* Split characters */
+.split {
+  display: inline-block;
+}
+.split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.1em 0 0.14em;
+  margin: -0.1em 0 -0.14em;
+}
+.split__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Reveal targets start hidden only once JS owns them (GSAP sets the start state). */
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* ------------------------------ Reduced motion ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
